@@ -1,5 +1,5 @@
 ﻿using AvtokampiWebAPI.Models.CampAggregate;
-using AvtokampiWebAPI.Services.Interfaces;
+using AvtokampiWebAPI.Services.Camps;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -16,10 +16,10 @@ namespace AvtokampiWebAPI.Controllers
     [Authorize]
     public class AvtokampiController : ControllerBase
     {
-        private readonly IAvtokampiRepository _avtokampiService;
+        private readonly IAvtokampiService _avtokampiService;
         private readonly ILogger _logger;
 
-        public AvtokampiController(IAvtokampiRepository avtokampiService, ILogger<AvtokampiController> logger)
+        public AvtokampiController(IAvtokampiService avtokampiService, ILogger<AvtokampiController> logger)
         {
             _avtokampiService = avtokampiService;
             _logger = logger;
@@ -52,7 +52,7 @@ namespace AvtokampiWebAPI.Controllers
                 if (result == null)
                 {
                     return NotFound(
- /*new ErrorHandlerModel($"Zaposleni z ID { id }, ne obstaja.", HttpStatusCode.NotFound)*/);
+                        /*new ErrorHandlerModel($"Zaposleni z ID { id }, ne obstaja.", HttpStatusCode.NotFound)*/);
                 }
 
                 var metadata = new
@@ -104,7 +104,7 @@ namespace AvtokampiWebAPI.Controllers
                 if (result == null)
                 {
                     return NotFound(
- /*new ErrorHandlerModel($"Zaposleni z ID { id }, ne obstaja.", HttpStatusCode.NotFound)*/);
+                        /*new ErrorHandlerModel($"Zaposleni z ID { id }, ne obstaja.", HttpStatusCode.NotFound)*/);
                 }
 
                 return Ok(result);
@@ -143,7 +143,7 @@ namespace AvtokampiWebAPI.Controllers
                 if (result == null)
                 {
                     return NotFound(
- /*new ErrorHandlerModel($"Zaposleni z ID { id }, ne obstaja.", HttpStatusCode.NotFound)*/);
+                        /*new ErrorHandlerModel($"Zaposleni z ID { id }, ne obstaja.", HttpStatusCode.NotFound)*/);
                 }
 
                 return Ok(result);
@@ -151,7 +151,7 @@ namespace AvtokampiWebAPI.Controllers
             catch (ArgumentException)
             {
                 return BadRequest(
- /*new ErrorHandlerModel($"Argument ID { id } ni v pravilni obliki.", HttpStatusCode.BadRequest)*/);
+                    /*new ErrorHandlerModel($"Argument ID { id } ni v pravilni obliki.", HttpStatusCode.BadRequest)*/);
             }
             catch (Exception e)
             {
@@ -189,7 +189,7 @@ namespace AvtokampiWebAPI.Controllers
                 if (result == false)
                 {
                     return NotFound(
- /*new ErrorHandlerModel($"Zaposleni z ID { id }, ne obstaja.", HttpStatusCode.NotFound)*/);
+                        /*new ErrorHandlerModel($"Zaposleni z ID { id }, ne obstaja.", HttpStatusCode.NotFound)*/);
                 }
 
                 return Created("/avtokampi/id", result);
@@ -197,7 +197,7 @@ namespace AvtokampiWebAPI.Controllers
             catch (ArgumentException)
             {
                 return BadRequest(
- /*new ErrorHandlerModel($"Argument ID { id } ni v pravilni obliki.", HttpStatusCode.BadRequest)*/);
+                    /*new ErrorHandlerModel($"Argument ID { id } ni v pravilni obliki.", HttpStatusCode.BadRequest)*/);
             }
             catch (Exception e)
             {
@@ -244,7 +244,7 @@ namespace AvtokampiWebAPI.Controllers
                 if (result == null)
                 {
                     return NotFound(
- /*new ErrorHandlerModel($"Zaposleni z ID { id }, ne obstaja.", HttpStatusCode.NotFound)*/);
+                        /*new ErrorHandlerModel($"Zaposleni z ID { id }, ne obstaja.", HttpStatusCode.NotFound)*/);
                 }
 
                 return NoContent();
@@ -252,7 +252,7 @@ namespace AvtokampiWebAPI.Controllers
             catch (ArgumentException)
             {
                 return BadRequest(
- /*new ErrorHandlerModel($"Argument ID { id } ni v pravilni obliki.", HttpStatusCode.BadRequest)*/);
+                    /*new ErrorHandlerModel($"Argument ID { id } ni v pravilni obliki.", HttpStatusCode.BadRequest)*/);
             }
             catch (Exception e)
             {
@@ -287,7 +287,7 @@ namespace AvtokampiWebAPI.Controllers
                 if (result == false)
                 {
                     return NotFound(
- /*new ErrorHandlerModel($"Zaposleni z ID { id }, ne obstaja.", HttpStatusCode.NotFound)*/);
+                        /*new ErrorHandlerModel($"Zaposleni z ID { id }, ne obstaja.", HttpStatusCode.NotFound)*/);
                 }
 
                 return NoContent();
@@ -295,7 +295,7 @@ namespace AvtokampiWebAPI.Controllers
             catch (ArgumentException)
             {
                 return BadRequest(
- /*new ErrorHandlerModel($"Argument ID { id } ni v pravilni obliki.", HttpStatusCode.BadRequest)*/);
+                    /*new ErrorHandlerModel($"Argument ID { id } ni v pravilni obliki.", HttpStatusCode.BadRequest)*/);
             }
             catch (Exception e)
             {
@@ -331,7 +331,7 @@ namespace AvtokampiWebAPI.Controllers
                 if (result == null)
                 {
                     return NotFound(
- /*new ErrorHandlerModel($"Zaposleni z ID { id }, ne obstaja.", HttpStatusCode.NotFound)*/);
+                        /*new ErrorHandlerModel($"Zaposleni z ID { id }, ne obstaja.", HttpStatusCode.NotFound)*/);
                 }
 
                 return Ok(result);
@@ -339,7 +339,7 @@ namespace AvtokampiWebAPI.Controllers
             catch (ArgumentException)
             {
                 return BadRequest(
- /*new ErrorHandlerModel($"Argument ID { id } ni v pravilni obliki.", HttpStatusCode.BadRequest)*/);
+                    /*new ErrorHandlerModel($"Argument ID { id } ni v pravilni obliki.", HttpStatusCode.BadRequest)*/);
             }
             catch (Exception e)
             {
@@ -375,7 +375,7 @@ namespace AvtokampiWebAPI.Controllers
                 if (result == null)
                 {
                     return NotFound(
- /*new ErrorHandlerModel($"Zaposleni z ID { id }, ne obstaja.", HttpStatusCode.NotFound)*/);
+                        /*new ErrorHandlerModel($"Zaposleni z ID { id }, ne obstaja.", HttpStatusCode.NotFound)*/);
                 }
 
                 return Ok(result);
@@ -383,7 +383,7 @@ namespace AvtokampiWebAPI.Controllers
             catch (ArgumentException)
             {
                 return BadRequest(
- /*new ErrorHandlerModel($"Argument ID { id } ni v pravilni obliki.", HttpStatusCode.BadRequest)*/);
+                    /*new ErrorHandlerModel($"Argument ID { id } ni v pravilni obliki.", HttpStatusCode.BadRequest)*/);
             }
             catch (Exception e)
             {
@@ -422,7 +422,7 @@ namespace AvtokampiWebAPI.Controllers
                 if (result == false)
                 {
                     return NotFound(
- /*new ErrorHandlerModel($"Zaposleni z ID { id }, ne obstaja.", HttpStatusCode.NotFound)*/);
+                        /*new ErrorHandlerModel($"Zaposleni z ID { id }, ne obstaja.", HttpStatusCode.NotFound)*/);
                 }
 
                 return Created("/avtokampi/id", result);
@@ -430,7 +430,7 @@ namespace AvtokampiWebAPI.Controllers
             catch (ArgumentException)
             {
                 return BadRequest(
- /*new ErrorHandlerModel($"Argument ID { id } ni v pravilni obliki.", HttpStatusCode.BadRequest)*/);
+                    /*new ErrorHandlerModel($"Argument ID { id } ni v pravilni obliki.", HttpStatusCode.BadRequest)*/);
             }
             catch (Exception e)
             {
@@ -469,7 +469,7 @@ namespace AvtokampiWebAPI.Controllers
                 if (result == false)
                 {
                     return NotFound(
- /*new ErrorHandlerModel($"Zaposleni z ID { id }, ne obstaja.", HttpStatusCode.NotFound)*/);
+                        /*new ErrorHandlerModel($"Zaposleni z ID { id }, ne obstaja.", HttpStatusCode.NotFound)*/);
                 }
 
                 return Created("/avtokampi/id", result);
@@ -477,7 +477,7 @@ namespace AvtokampiWebAPI.Controllers
             catch (ArgumentException)
             {
                 return BadRequest(
- /*new ErrorHandlerModel($"Argument ID { id } ni v pravilni obliki.", HttpStatusCode.BadRequest)*/);
+                    /*new ErrorHandlerModel($"Argument ID { id } ni v pravilni obliki.", HttpStatusCode.BadRequest)*/);
             }
             catch (Exception e)
             {
@@ -516,7 +516,7 @@ namespace AvtokampiWebAPI.Controllers
                 if (result == null)
                 {
                     return NotFound(
- /*new ErrorHandlerModel($"Zaposleni z ID { id }, ne obstaja.", HttpStatusCode.NotFound)*/);
+                        /*new ErrorHandlerModel($"Zaposleni z ID { id }, ne obstaja.", HttpStatusCode.NotFound)*/);
                 }
 
                 return NoContent();
@@ -524,7 +524,7 @@ namespace AvtokampiWebAPI.Controllers
             catch (ArgumentException)
             {
                 return BadRequest(
- /*new ErrorHandlerModel($"Argument ID { id } ni v pravilni obliki.", HttpStatusCode.BadRequest)*/);
+                    /*new ErrorHandlerModel($"Argument ID { id } ni v pravilni obliki.", HttpStatusCode.BadRequest)*/);
             }
             catch (Exception e)
             {
@@ -604,7 +604,7 @@ namespace AvtokampiWebAPI.Controllers
                 if (result == false)
                 {
                     return NotFound(
- /*new ErrorHandlerModel($"Zaposleni z ID { id }, ne obstaja.", HttpStatusCode.NotFound)*/);
+                        /*new ErrorHandlerModel($"Zaposleni z ID { id }, ne obstaja.", HttpStatusCode.NotFound)*/);
                 }
 
                 return NoContent();
@@ -612,7 +612,7 @@ namespace AvtokampiWebAPI.Controllers
             catch (ArgumentException)
             {
                 return BadRequest(
- /*new ErrorHandlerModel($"Argument ID { id } ni v pravilni obliki.", HttpStatusCode.BadRequest)*/);
+                    /*new ErrorHandlerModel($"Argument ID { id } ni v pravilni obliki.", HttpStatusCode.BadRequest)*/);
             }
             catch (Exception e)
             {
@@ -648,7 +648,7 @@ namespace AvtokampiWebAPI.Controllers
                 if (result == null)
                 {
                     return NotFound(
- /*new ErrorHandlerModel($"Zaposleni z ID { id }, ne obstaja.", HttpStatusCode.NotFound)*/);
+                        /*new ErrorHandlerModel($"Zaposleni z ID { id }, ne obstaja.", HttpStatusCode.NotFound)*/);
                 }
 
                 return Ok(result);
@@ -656,7 +656,7 @@ namespace AvtokampiWebAPI.Controllers
             catch (ArgumentException)
             {
                 return BadRequest(
- /*new ErrorHandlerModel($"Argument ID { id } ni v pravilni obliki.", HttpStatusCode.BadRequest)*/);
+                    /*new ErrorHandlerModel($"Argument ID { id } ni v pravilni obliki.", HttpStatusCode.BadRequest)*/);
             }
             catch (Exception e)
             {
@@ -692,7 +692,7 @@ namespace AvtokampiWebAPI.Controllers
                 if (result == null)
                 {
                     return NotFound(
- /*new ErrorHandlerModel($"Zaposleni z ID { id }, ne obstaja.", HttpStatusCode.NotFound)*/);
+                        /*new ErrorHandlerModel($"Zaposleni z ID { id }, ne obstaja.", HttpStatusCode.NotFound)*/);
                 }
 
                 return Ok(result);
@@ -700,7 +700,7 @@ namespace AvtokampiWebAPI.Controllers
             catch (ArgumentException)
             {
                 return BadRequest(
- /*new ErrorHandlerModel($"Argument ID { id } ni v pravilni obliki.", HttpStatusCode.BadRequest)*/);
+                    /*new ErrorHandlerModel($"Argument ID { id } ni v pravilni obliki.", HttpStatusCode.BadRequest)*/);
             }
             catch (Exception e)
             {
@@ -739,7 +739,7 @@ namespace AvtokampiWebAPI.Controllers
                 if (result == false)
                 {
                     return NotFound(
- /*new ErrorHandlerModel($"Zaposleni z ID { id }, ne obstaja.", HttpStatusCode.NotFound)*/);
+                        /*new ErrorHandlerModel($"Zaposleni z ID { id }, ne obstaja.", HttpStatusCode.NotFound)*/);
                 }
 
                 return Created("/avtokampi/id", result);
@@ -747,7 +747,7 @@ namespace AvtokampiWebAPI.Controllers
             catch (ArgumentException)
             {
                 return BadRequest(
- /*new ErrorHandlerModel($"Argument ID { id } ni v pravilni obliki.", HttpStatusCode.BadRequest)*/);
+                    /*new ErrorHandlerModel($"Argument ID { id } ni v pravilni obliki.", HttpStatusCode.BadRequest)*/);
             }
             catch (Exception e)
             {
@@ -786,7 +786,7 @@ namespace AvtokampiWebAPI.Controllers
                 if (result == null)
                 {
                     return NotFound(
- /*new ErrorHandlerModel($"Zaposleni z ID { id }, ne obstaja.", HttpStatusCode.NotFound)*/);
+                        /*new ErrorHandlerModel($"Zaposleni z ID { id }, ne obstaja.", HttpStatusCode.NotFound)*/);
                 }
 
                 return NoContent();
@@ -794,7 +794,7 @@ namespace AvtokampiWebAPI.Controllers
             catch (ArgumentException)
             {
                 return BadRequest(
- /*new ErrorHandlerModel($"Argument ID { id } ni v pravilni obliki.", HttpStatusCode.BadRequest)*/);
+                    /*new ErrorHandlerModel($"Argument ID { id } ni v pravilni obliki.", HttpStatusCode.BadRequest)*/);
             }
             catch (Exception e)
             {
@@ -829,7 +829,7 @@ namespace AvtokampiWebAPI.Controllers
                 if (result == false)
                 {
                     return NotFound(
- /*new ErrorHandlerModel($"Zaposleni z ID { id }, ne obstaja.", HttpStatusCode.NotFound)*/);
+                        /*new ErrorHandlerModel($"Zaposleni z ID { id }, ne obstaja.", HttpStatusCode.NotFound)*/);
                 }
 
                 return NoContent();
@@ -837,7 +837,7 @@ namespace AvtokampiWebAPI.Controllers
             catch (ArgumentException)
             {
                 return BadRequest(
- /*new ErrorHandlerModel($"Argument ID { id } ni v pravilni obliki.", HttpStatusCode.BadRequest)*/);
+                    /*new ErrorHandlerModel($"Argument ID { id } ni v pravilni obliki.", HttpStatusCode.BadRequest)*/);
             }
             catch (Exception e)
             {
@@ -872,7 +872,7 @@ namespace AvtokampiWebAPI.Controllers
                 if (result == null)
                 {
                     return NotFound(
- /*new ErrorHandlerModel($"Zaposleni z ID { id }, ne obstaja.", HttpStatusCode.NotFound)*/);
+                        /*new ErrorHandlerModel($"Zaposleni z ID { id }, ne obstaja.", HttpStatusCode.NotFound)*/);
                 }
 
                 return Ok(result);
@@ -910,7 +910,7 @@ namespace AvtokampiWebAPI.Controllers
                 if (result == null)
                 {
                     return NotFound(
- /*new ErrorHandlerModel($"Zaposleni z ID { id }, ne obstaja.", HttpStatusCode.NotFound)*/);
+                        /*new ErrorHandlerModel($"Zaposleni z ID { id }, ne obstaja.", HttpStatusCode.NotFound)*/);
                 }
 
                 return Ok(result);

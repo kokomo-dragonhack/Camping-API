@@ -1,14 +1,13 @@
-﻿using AvtokampiWebAPI.Models;
-using AvtokampiWebAPI.Models.CampAggregate;
-using AvtokampiWebAPI.Models.UserAggregate;
-using AvtokampiWebAPI.Services.Interfaces;
-using Microsoft.EntityFrameworkCore;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AvtokampiWebAPI.Models;
+using AvtokampiWebAPI.Models.CampAggregate;
+using AvtokampiWebAPI.Models.UserAggregate;
+using Microsoft.EntityFrameworkCore;
 
-namespace AvtokampiWebAPI.Services
+namespace AvtokampiWebAPI.Repositories.Users
 {
     public class UporabnikiRepository : IUporabnikiRepository
     {

@@ -1,9 +1,9 @@
-﻿using AvtokampiWebAPI.Models.CampAggregate;
-using AvtokampiWebAPI.Models.Shared;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using AvtokampiWebAPI.Models.CampAggregate;
+using AvtokampiWebAPI.Models.Shared;
 
-namespace AvtokampiWebAPI.Services.Interfaces
+namespace AvtokampiWebAPI.Repositories.Camps
 {
     public interface IAvtokampiRepository
     {

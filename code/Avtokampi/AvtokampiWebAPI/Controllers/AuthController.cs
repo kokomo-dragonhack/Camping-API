@@ -1,10 +1,10 @@
 ﻿using AvtokampiWebAPI.Models.AuthAggregate;
-using AvtokampiWebAPI.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Threading.Tasks;
+using AvtokampiWebAPI.Services.Auth;
 
 namespace AvtokampiWebAPI.Controllers
 {
@@ -14,10 +14,10 @@ namespace AvtokampiWebAPI.Controllers
     [Authorize]
     public class AuthController : ControllerBase
     {
-        private readonly IAuthRepository _authService;
+        private readonly IAuthService _authService;
         private readonly ILogger _logger;
 
-        public AuthController(IAuthRepository authService, ILogger<AuthController> logger)
+        public AuthController(IAuthService authService, ILogger<AuthController> logger)
         {
             _authService = authService;
             _logger = logger;

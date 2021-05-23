@@ -8,6 +8,11 @@ Table of Contents
 - [Database](#database)
 
 
+## Presentation video
+
+- https://youtu.be/20yYPs08Vy0
+- https://youtu.be/k0_4XvFMspk
+
 ## Precondition
 
 Proper application running tested with the following development tools:
@@ -47,3 +52,6 @@ When you have the development environment ready, run the following commands:
 
 - https://camping-api.azurewebsites.net/
 - https://camping-web.web.app/
+
+You can try login with user:
+- dabeu@cegu.com / string

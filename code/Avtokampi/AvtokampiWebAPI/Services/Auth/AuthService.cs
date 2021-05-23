@@ -1,28 +1,28 @@
-﻿using AvtokampiWebAPI.Models;
-using AvtokampiWebAPI.Models.AuthAggregate;
-using AvtokampiWebAPI.Models.UserAggregate;
-using AvtokampiWebAPI.Services.Interfaces;
-using CryptoHelper;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
-using Microsoft.IdentityModel.Tokens;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using AvtokampiWebAPI.Models;
+using AvtokampiWebAPI.Models.AuthAggregate;
+using AvtokampiWebAPI.Models.UserAggregate;
+using AvtokampiWebAPI.Repositories.Users;
+using CryptoHelper;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 
-namespace AvtokampiWebAPI.Services
+namespace AvtokampiWebAPI.Services.Auth
 {
-    public class AuthRepository : IAuthRepository
+    public class AuthService : IAuthService
     {
         private readonly TokenManagementDto _tokenManagementDto;
         private readonly IUporabnikiRepository _uporabnikiService;
         private readonly avtokampiContext _db;
 
-        public AuthRepository(IOptions<TokenManagementDto> tokenManagement, IUporabnikiRepository uporabnikiService,
+        public AuthService(IOptions<TokenManagementDto> tokenManagement, IUporabnikiRepository uporabnikiService,
             avtokampiContext db)
         {
             _tokenManagementDto = tokenManagement.Value;

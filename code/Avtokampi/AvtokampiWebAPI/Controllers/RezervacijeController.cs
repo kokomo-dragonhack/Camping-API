@@ -1,5 +1,5 @@
 ﻿using AvtokampiWebAPI.Models.ReservationAggregate;
-using AvtokampiWebAPI.Services.Interfaces;
+using AvtokampiWebAPI.Services.Reservations;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -14,10 +14,10 @@ namespace AvtokampiWebAPI.Controllers
     [Authorize]
     public class RezervacijeController : ControllerBase
     {
-        private readonly IRezervacijeRepository _rezervacijeService;
+        private readonly IRezervacijeService _rezervacijeService;
         private readonly ILogger _logger;
 
-        public RezervacijeController(IRezervacijeRepository rezervacijeService, ILogger<RezervacijeController> logger)
+        public RezervacijeController(IRezervacijeService rezervacijeService, ILogger<RezervacijeController> logger)
         {
             _rezervacijeService = rezervacijeService;
             _logger = logger;
@@ -49,7 +49,7 @@ namespace AvtokampiWebAPI.Controllers
                 if (result == null)
                 {
                     return NotFound(
- /*new ErrorHandlerModel($"Zaposleni z ID { id }, ne obstaja.", HttpStatusCode.NotFound)*/);
+                        /*new ErrorHandlerModel($"Zaposleni z ID { id }, ne obstaja.", HttpStatusCode.NotFound)*/);
                 }
 
                 return Ok(result);
@@ -87,7 +87,7 @@ namespace AvtokampiWebAPI.Controllers
                 if (result == null)
                 {
                     return NotFound(
- /*new ErrorHandlerModel($"Zaposleni z ID { id }, ne obstaja.", HttpStatusCode.NotFound)*/);
+                        /*new ErrorHandlerModel($"Zaposleni z ID { id }, ne obstaja.", HttpStatusCode.NotFound)*/);
                 }
 
                 return Ok(result);
@@ -95,7 +95,7 @@ namespace AvtokampiWebAPI.Controllers
             catch (ArgumentException)
             {
                 return BadRequest(
- /*new ErrorHandlerModel($"Argument ID { id } ni v pravilni obliki.", HttpStatusCode.BadRequest)*/);
+                    /*new ErrorHandlerModel($"Argument ID { id } ni v pravilni obliki.", HttpStatusCode.BadRequest)*/);
             }
             catch (Exception e)
             {
@@ -133,7 +133,7 @@ namespace AvtokampiWebAPI.Controllers
                 if (result == false)
                 {
                     return NotFound(
- /*new ErrorHandlerModel($"Zaposleni z ID { id }, ne obstaja.", HttpStatusCode.NotFound)*/);
+                        /*new ErrorHandlerModel($"Zaposleni z ID { id }, ne obstaja.", HttpStatusCode.NotFound)*/);
                 }
 
                 return Created("/rezervacije/id", result);
@@ -141,7 +141,7 @@ namespace AvtokampiWebAPI.Controllers
             catch (ArgumentException)
             {
                 return BadRequest(
- /*new ErrorHandlerModel($"Argument ID { id } ni v pravilni obliki.", HttpStatusCode.BadRequest)*/);
+                    /*new ErrorHandlerModel($"Argument ID { id } ni v pravilni obliki.", HttpStatusCode.BadRequest)*/);
             }
             catch (Exception e)
             {
@@ -180,7 +180,7 @@ namespace AvtokampiWebAPI.Controllers
                 if (result == null)
                 {
                     return NotFound(
- /*new ErrorHandlerModel($"Zaposleni z ID { id }, ne obstaja.", HttpStatusCode.NotFound)*/);
+                        /*new ErrorHandlerModel($"Zaposleni z ID { id }, ne obstaja.", HttpStatusCode.NotFound)*/);
                 }
 
                 return NoContent();
@@ -188,7 +188,7 @@ namespace AvtokampiWebAPI.Controllers
             catch (ArgumentException)
             {
                 return BadRequest(
- /*new ErrorHandlerModel($"Argument ID { id } ni v pravilni obliki.", HttpStatusCode.BadRequest)*/);
+                    /*new ErrorHandlerModel($"Argument ID { id } ni v pravilni obliki.", HttpStatusCode.BadRequest)*/);
             }
             catch (Exception e)
             {
@@ -223,7 +223,7 @@ namespace AvtokampiWebAPI.Controllers
                 if (result == false)
                 {
                     return NotFound(
- /*new ErrorHandlerModel($"Zaposleni z ID { id }, ne obstaja.", HttpStatusCode.NotFound)*/);
+                        /*new ErrorHandlerModel($"Zaposleni z ID { id }, ne obstaja.", HttpStatusCode.NotFound)*/);
                 }
 
                 return NoContent();
@@ -231,7 +231,7 @@ namespace AvtokampiWebAPI.Controllers
             catch (ArgumentException)
             {
                 return BadRequest(
- /*new ErrorHandlerModel($"Argument ID { id } ni v pravilni obliki.", HttpStatusCode.BadRequest)*/);
+                    /*new ErrorHandlerModel($"Argument ID { id } ni v pravilni obliki.", HttpStatusCode.BadRequest)*/);
             }
             catch (Exception e)
             {
@@ -265,7 +265,7 @@ namespace AvtokampiWebAPI.Controllers
                 if (result == null)
                 {
                     return NotFound(
- /*new ErrorHandlerModel($"Zaposleni z ID { id }, ne obstaja.", HttpStatusCode.NotFound)*/);
+                        /*new ErrorHandlerModel($"Zaposleni z ID { id }, ne obstaja.", HttpStatusCode.NotFound)*/);
                 }
 
                 return Ok(result);
@@ -302,7 +302,7 @@ namespace AvtokampiWebAPI.Controllers
                 if (result == null)
                 {
                     return NotFound(
- /*new ErrorHandlerModel($"Zaposleni z ID { id }, ne obstaja.", HttpStatusCode.NotFound)*/);
+                        /*new ErrorHandlerModel($"Zaposleni z ID { id }, ne obstaja.", HttpStatusCode.NotFound)*/);
                 }
 
                 return Ok(result);

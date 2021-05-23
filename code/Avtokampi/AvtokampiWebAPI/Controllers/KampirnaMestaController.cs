@@ -1,5 +1,5 @@
 ﻿using AvtokampiWebAPI.Models.CampAggregate;
-using AvtokampiWebAPI.Services.Interfaces;
+using AvtokampiWebAPI.Services.Camps;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -14,13 +14,13 @@ namespace AvtokampiWebAPI.Controllers
     [Authorize]
     public class KampirnaMestaController : ControllerBase
     {
-        private readonly IKampirnaMestaRepository _kampirnaMestaService;
+        private readonly IAvtokampiService _avtokampiService;
         private readonly ILogger _logger;
 
-        public KampirnaMestaController(IKampirnaMestaRepository kampirnaMestaService,
+        public KampirnaMestaController(IAvtokampiService avtokampiService,
             ILogger<KampirnaMestaController> logger)
         {
-            _kampirnaMestaService = kampirnaMestaService;
+            _avtokampiService = avtokampiService;
             _logger = logger;
         }
 
@@ -47,11 +47,11 @@ namespace AvtokampiWebAPI.Controllers
         {
             try
             {
-                var result = await _kampirnaMestaService.GetKampirnoMestoByAvtokamp(kamp_id);
+                var result = await _avtokampiService.GetKampirnoMestoByAvtokamp(kamp_id);
                 if (result == null)
                 {
                     return NotFound(
- /*new ErrorHandlerModel($"Zaposleni z ID { id }, ne obstaja.", HttpStatusCode.NotFound)*/);
+                        /*new ErrorHandlerModel($"Zaposleni z ID { id }, ne obstaja.", HttpStatusCode.NotFound)*/);
                 }
 
                 return Ok(result);
@@ -85,11 +85,11 @@ namespace AvtokampiWebAPI.Controllers
         {
             try
             {
-                var result = await _kampirnaMestaService.GetKampirnoMestoByID(kamp_mesto_id);
+                var result = await _avtokampiService.GetKampirnoMestoByID(kamp_mesto_id);
                 if (result == null)
                 {
                     return NotFound(
- /*new ErrorHandlerModel($"Zaposleni z ID { id }, ne obstaja.", HttpStatusCode.NotFound)*/);
+                        /*new ErrorHandlerModel($"Zaposleni z ID { id }, ne obstaja.", HttpStatusCode.NotFound)*/);
                 }
 
                 return Ok(result);
@@ -97,7 +97,7 @@ namespace AvtokampiWebAPI.Controllers
             catch (ArgumentException)
             {
                 return BadRequest(
- /*new ErrorHandlerModel($"Argument ID { id } ni v pravilni obliki.", HttpStatusCode.BadRequest)*/);
+                    /*new ErrorHandlerModel($"Argument ID { id } ni v pravilni obliki.", HttpStatusCode.BadRequest)*/);
             }
             catch (Exception e)
             {
@@ -132,11 +132,11 @@ namespace AvtokampiWebAPI.Controllers
         {
             try
             {
-                var result = await _kampirnaMestaService.CreateKampirnoMesto(kamp_mesto, kamp_id);
+                var result = await _avtokampiService.CreateKampirnoMesto(kamp_mesto, kamp_id);
                 if (result == false)
                 {
                     return NotFound(
- /*new ErrorHandlerModel($"Zaposleni z ID { id }, ne obstaja.", HttpStatusCode.NotFound)*/);
+                        /*new ErrorHandlerModel($"Zaposleni z ID { id }, ne obstaja.", HttpStatusCode.NotFound)*/);
                 }
 
                 return Created("/kampirnamesta/id", result);
@@ -144,7 +144,7 @@ namespace AvtokampiWebAPI.Controllers
             catch (ArgumentException)
             {
                 return BadRequest(
- /*new ErrorHandlerModel($"Argument ID { id } ni v pravilni obliki.", HttpStatusCode.BadRequest)*/);
+                    /*new ErrorHandlerModel($"Argument ID { id } ni v pravilni obliki.", HttpStatusCode.BadRequest)*/);
             }
             catch (Exception e)
             {
@@ -181,11 +181,11 @@ namespace AvtokampiWebAPI.Controllers
         {
             try
             {
-                var result = await _kampirnaMestaService.UpdateKampirnoMesto(kamp_mesto, kamp_id, kamp_mesto_id);
+                var result = await _avtokampiService.UpdateKampirnoMesto(kamp_mesto, kamp_id, kamp_mesto_id);
                 if (result == null)
                 {
                     return NotFound(
- /*new ErrorHandlerModel($"Zaposleni z ID { id }, ne obstaja.", HttpStatusCode.NotFound)*/);
+                        /*new ErrorHandlerModel($"Zaposleni z ID { id }, ne obstaja.", HttpStatusCode.NotFound)*/);
                 }
 
                 return NoContent();
@@ -193,7 +193,7 @@ namespace AvtokampiWebAPI.Controllers
             catch (ArgumentException)
             {
                 return BadRequest(
- /*new ErrorHandlerModel($"Argument ID { id } ni v pravilni obliki.", HttpStatusCode.BadRequest)*/);
+                    /*new ErrorHandlerModel($"Argument ID { id } ni v pravilni obliki.", HttpStatusCode.BadRequest)*/);
             }
             catch (Exception e)
             {
@@ -225,11 +225,11 @@ namespace AvtokampiWebAPI.Controllers
         {
             try
             {
-                var result = await _kampirnaMestaService.RemoveKampMesto(kamp_id, kamp_mesto_id);
+                var result = await _avtokampiService.RemoveKampMesto(kamp_id, kamp_mesto_id);
                 if (result == false)
                 {
                     return NotFound(
- /*new ErrorHandlerModel($"Zaposleni z ID { id }, ne obstaja.", HttpStatusCode.NotFound)*/);
+                        /*new ErrorHandlerModel($"Zaposleni z ID { id }, ne obstaja.", HttpStatusCode.NotFound)*/);
                 }
 
                 return NoContent();
@@ -237,7 +237,7 @@ namespace AvtokampiWebAPI.Controllers
             catch (ArgumentException)
             {
                 return BadRequest(
- /*new ErrorHandlerModel($"Argument ID { id } ni v pravilni obliki.", HttpStatusCode.BadRequest)*/);
+                    /*new ErrorHandlerModel($"Argument ID { id } ni v pravilni obliki.", HttpStatusCode.BadRequest)*/);
             }
             catch (Exception e)
             {
@@ -267,11 +267,11 @@ namespace AvtokampiWebAPI.Controllers
         {
             try
             {
-                var result = await _kampirnaMestaService.GetKategorijeKampirnihMest();
+                var result = await _avtokampiService.GetKategorijeKampirnihMest();
                 if (result == null)
                 {
                     return NotFound(
- /*new ErrorHandlerModel($"Zaposleni z ID { id }, ne obstaja.", HttpStatusCode.NotFound)*/);
+                        /*new ErrorHandlerModel($"Zaposleni z ID { id }, ne obstaja.", HttpStatusCode.NotFound)*/);
                 }
 
                 return Ok(result);

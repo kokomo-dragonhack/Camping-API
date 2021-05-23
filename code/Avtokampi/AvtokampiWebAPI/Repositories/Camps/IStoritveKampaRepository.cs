@@ -1,8 +1,8 @@
-﻿using AvtokampiWebAPI.Models.CampAggregate;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using AvtokampiWebAPI.Models.CampAggregate;
 
-namespace AvtokampiWebAPI.Services.Interfaces
+namespace AvtokampiWebAPI.Repositories.Camps
 {
     public interface IStoritveKampaRepository
     {

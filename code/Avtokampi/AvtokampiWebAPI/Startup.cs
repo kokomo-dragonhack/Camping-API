@@ -1,7 +1,12 @@
 using AvtokampiWebAPI.Models;
 using AvtokampiWebAPI.Models.AuthAggregate;
-using AvtokampiWebAPI.Services;
-using AvtokampiWebAPI.Services.Interfaces;
+using AvtokampiWebAPI.Repositories.Camps;
+using AvtokampiWebAPI.Repositories.Reservations;
+using AvtokampiWebAPI.Repositories.Users;
+using AvtokampiWebAPI.Services.Auth;
+using AvtokampiWebAPI.Services.Camps;
+using AvtokampiWebAPI.Services.Reservations;
+using AvtokampiWebAPI.Services.Users;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -73,10 +78,15 @@ namespace AvtokampiWebAPI
                 });
 
 
+            // Services logic
+            services.AddScoped<IUporabnikiService, UporabnikiService>();
+            services.AddScoped<IRezervacijeService, RezervacijeService>();
+            services.AddScoped<IAvtokampiService, AvtokampiService>();
+            services.AddScoped<IAuthService, AuthService>();
+
             // Repository services
             services.AddScoped<IUporabnikiRepository, UporabnikiRepository>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddScoped<IAvtokampiRepository, AvtokampiRepository>();
             services.AddScoped<IKampirnaMestaRepository, KampirnaMestaRepository>();
             services.AddScoped<IRezervacijeRepository, RezervacijeRepository>();

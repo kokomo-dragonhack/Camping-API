@@ -1,12 +1,11 @@
-﻿using AvtokampiWebAPI.Models;
-using AvtokampiWebAPI.Models.CampAggregate;
-using AvtokampiWebAPI.Services.Interfaces;
-using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AvtokampiWebAPI.Models;
+using AvtokampiWebAPI.Models.CampAggregate;
+using Microsoft.EntityFrameworkCore;
 
-namespace AvtokampiWebAPI.Services
+namespace AvtokampiWebAPI.Repositories.Camps
 {
     public class StoritveKampaRepository : IStoritveKampaRepository
     {

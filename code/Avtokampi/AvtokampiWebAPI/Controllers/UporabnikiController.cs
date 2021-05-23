@@ -1,11 +1,10 @@
-﻿using AvtokampiWebAPI.Models;
-using AvtokampiWebAPI.Services.Interfaces;
+﻿using AvtokampiWebAPI.Models.CampAggregate;
+using AvtokampiWebAPI.Services.Users;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Threading.Tasks;
-using AvtokampiWebAPI.Models.CampAggregate;
 
 namespace AvtokampiWebAPI.Controllers
 {
@@ -15,14 +14,15 @@ namespace AvtokampiWebAPI.Controllers
     [Authorize]
     public class UporabnikiController : ControllerBase
     {
-        private readonly IUporabnikiRepository _uporabnikiService;
+        private readonly IUporabnikiService _uporabnikiService;
         private readonly ILogger _logger;
 
-        public UporabnikiController(IUporabnikiRepository uporabnikiService, ILogger<UporabnikiController> logger)
+        public UporabnikiController(IUporabnikiService uporabnikiService, ILogger<UporabnikiController> logger)
         {
             _uporabnikiService = uporabnikiService;
             _logger = logger;
         }
+
 
         /// <summary>
         ///     Podatki o uporabniku
