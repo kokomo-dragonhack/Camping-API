@@ -20,7 +20,7 @@ Proper application running tested with the following development tools:
 You can run app with Docker. 
 
 - `cd code/Avtokampi`
-- `docker build -f AvtokampiWebAPI/Dockerfile -t camps@latest .`
+- `docker build -f AvtokampiWebAPI/Dockerfile -t camps:latest .`
 - `docker run -it camps`
 
 When you have the development environment ready, run the following commands:
@@ -39,7 +39,7 @@ When you have the development environment ready, run the following commands:
 ## Project structure
 
 - Models -> Domain models and Data transfer models
-- Services -> Service layer for bussiness logic
+- Services -> Service layer for business logic
 - Repositories -> Repository layer for communication with database
 - Controllers -> REST endpoints communication layer
 
